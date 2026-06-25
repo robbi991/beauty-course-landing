@@ -41,6 +41,19 @@
                 }
             }
         }
+        // Center the active tariff card (Gold Pack) on mobile load
+        const tariffsGrid = document.querySelector('#tariffs .grid');
+        if (tariffsGrid && window.innerWidth < 768) {
+            // Gold Pack is the second card (index 1)
+            const activeCard = tariffsGrid.children[1];
+            if (activeCard) {
+                // Scroll container to center the active card
+                setTimeout(() => {
+                    const scrollLeft = activeCard.offsetLeft - (tariffsGrid.clientWidth - activeCard.clientWidth) / 2;
+                    tariffsGrid.scrollLeft = scrollLeft;
+                }, 100);
+            }
+        }
     </script>
     <style>
         .accordion-content {
@@ -64,6 +77,15 @@
             max-height: 250px;
             opacity: 1;
             pointer-events: auto;
+        }
+
+        /* Desktop specific mask style for Hero Image */
+        @media (min-width: 1024px) {
+            #heroImage {
+                object-position: right 35% !important;
+                mask-image: radial-gradient(circle at 65% 55%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%) !important;
+                -webkit-mask-image: radial-gradient(circle at 65% 55%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%) !important;
+            }
         }
 
         /* Mobile specific overrides (viewports under 768px) */
@@ -372,7 +394,6 @@
         <div class="absolute right-0 top-0 bottom-0 w-full lg:w-[50%] h-full pointer-events-none z-0 overflow-hidden">
             <img id="heroImage" src="images/manicure_with_giant_moon.png" alt="Академия AAS" 
                  class="w-full h-full object-cover opacity-25 lg:opacity-100 transition-opacity duration-700 ease-out" 
-                 style="object-position: right 35%; mask-image: radial-gradient(circle at 65% 55%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%); -webkit-mask-image: radial-gradient(circle at 65% 55%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%);"
                  onerror="this.onerror=null; this.src='images/manicure_with_giant_moon.jpg';">
         </div>
     </section>
@@ -537,7 +558,7 @@
                         <p class="font-light">• Идеальная обработка синусов без пропилов и травм пластины.</p>
                         <p class="font-light">• Срез кутикулы в одну непрерывную ровную ленту.</p>
                         <p class="font-light">• Скоростной опил сложных и деформированных форм.</p>
-                        <p class="mt-2 text-sand-600 font-semibold uppercase tracking-wider text-[10px]">🔥 Результат модуля: Вы сократите время процедуры минимум на 30-40 минут и навсегда забудете о проблеме отслоек материала.</p>
+                        <p class="mt-2 text-sand-600 font-semibold text-sm sm:text-base leading-relaxed">🔥 Результат модуля: Вы сократите время процедуры минимум на 30-40 минут и навсегда забудете о проблеме отслоек материала.</p>
                     </div>
                 </div>
 
@@ -553,7 +574,7 @@
                         <p class="font-light">• Секреты атравматичного пилочного маникюра без режущих инструментов.</p>
                         <p class="font-light">• Индивидуальный подбор абразивности под любой тип кутикулы.</p>
                         <p class="font-light">• Японское глянцевание ногтей пудрой и пастами на основе натурального воска.</p>
-                        <p class="mt-2 text-sand-600 font-semibold uppercase tracking-wider text-[10px]">🔥 Результат модуля: Освоите самую дорогую и востребованную технику маникюра в мире, за которую VIP-клиенты платят тройной прайс.</p>
+                        <p class="mt-2 text-sand-600 font-semibold text-sm sm:text-base leading-relaxed">🔥 Результат модуля: Освоите самую дорогую и востребованную технику маникюра в мире, за которую VIP-клиенты платят тройной прайс.</p>
                     </div>
                 </div>
 
@@ -569,7 +590,7 @@
                         <p class="font-light">• Тонкое, незаметное и сверхпрочное укрепление базами класса люкс.</p>
                         <p class="font-light">• Быстрая реставрация, ремонт трещин и донаращивание углов ногтя.</p>
                         <p class="font-light">• Секреты нанесения цвета стык в стык к кутикуле без затеков.</p>
-                        <p class="mt-2 text-sand-600 font-semibold uppercase tracking-wider text-[10px]">🔥 Результат модуля: Ваши работы станут выглядеть безупречно тонкими, носибельными и естественными, создавая тот самый «идеальный блик».</p>
+                        <p class="mt-2 text-sand-600 font-semibold text-sm sm:text-base leading-relaxed">🔥 Результат модуля: Ваши работы станут выглядеть безупречно тонкими, носибельными и естественными, создавая тот самый «идеальный блик».</p>
                     </div>
                 </div>
 
@@ -585,7 +606,7 @@
                         <p class="font-light">• Психология работы с премиальными и требовательными клиентами.</p>
                         <p class="font-light">• Пошаговый план легализации и подтверждения часов обучения для Beauty Board в США/ОАЭ/Европе.</p>
                         <p class="font-light">• Продающее макро-портфолио в единой журнальной стилистике AAS.</p>
-                        <p class="mt-2 text-sand-600 font-semibold uppercase tracking-wider text-[10px]">🔥 Результат модуля: Вы получаете четкую инструкцию, как поднять цены на свои услуги в 3 раза на текущей базе и легально запустить бьюти-карьеру за рубежом.</p>
+                        <p class="mt-2 text-sand-600 font-semibold text-sm sm:text-base leading-relaxed">🔥 Результат модуля: Вы получаете четкую инструкцию, как поднять цены на свои услуги в 3 раза на текущей базе и легально запустить бьюти-карьеру за рубежом.</p>
                     </div>
                 </div>
             </div>
@@ -869,6 +890,19 @@
             selectOptions.classList.remove('open');
             selectArrow.classList.remove('rotate-180');
         });
+        // Center the active tariff card (Gold Pack) on mobile load
+        const tariffsGrid = document.querySelector('#tariffs .grid');
+        if (tariffsGrid && window.innerWidth < 768) {
+            // Gold Pack is the second card (index 1)
+            const activeCard = tariffsGrid.children[1];
+            if (activeCard) {
+                // Scroll container to center the active card
+                setTimeout(() => {
+                    const scrollLeft = activeCard.offsetLeft - (tariffsGrid.clientWidth - activeCard.clientWidth) / 2;
+                    tariffsGrid.scrollLeft = scrollLeft;
+                }, 100);
+            }
+        }
     </script>
 </body>
 </html>
