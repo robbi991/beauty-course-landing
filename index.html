@@ -385,25 +385,6 @@
                 margin-bottom: 12px !important;
             }
         }
-
-        @media (min-width: 768px) {
-            .founder-main-grid {
-                display: flex !important;
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: flex-start !important;
-                width: 100% !important;
-            }
-            .founder-main-grid > :nth-child(1) { /* The Image Container */
-                width: 45% !important;
-                flex: 0 0 45% !important;
-            }
-            .founder-main-grid > :nth-child(2) { /* The Text Container */
-                width: 50% !important;
-                flex: 0 0 50% !important;
-                padding-left: 40px !important;
-            }
-        }
     </style>
 </head>
 <body class="bg-sand-50 text-charcoal-900 font-sans antialiased overflow-x-hidden selection:bg-sand-300 selection:text-charcoal-900">
@@ -509,42 +490,51 @@
 
     <!-- FOUNDER SECTION -->
     <section id="founder" class="py-12 sm:py-20 lg:py-28 bg-white border-b border-sand-200 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-12">
-            <!-- Two-column container for Image (Left) and Text (Right) on Desktop -->
-            <div class="founder-main-grid flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-12">
-                <!-- Left Column (Image): w-full on mobile, 45% on desktop, aligned left -->
-                <div class="w-full flex-shrink-0 flex justify-start">
-                    <div class="relative w-full max-w-sm">
-                        <!-- Border frame -->
-                        <div class="absolute -inset-3 sm:-inset-4 border border-sand-300 rounded transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 pointer-events-none -z-10"></div>
-                        <!-- Image Container -->
-                        <div class="overflow-hidden rounded-sm h-[340px] sm:h-[460px] w-full bg-sand-100 shadow-sm border border-sand-200/50">
-                            <img src="images/армин фото.png" alt="Armine Arustamyan" class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]" onerror="this.onerror=null; this.src='images/армин фото.jpg';">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <!-- Main vertical flex container -->
+            <div class="flex flex-col items-start text-left w-full space-y-12">
+                
+                <!-- ELEMENT 1: The Content Wrapper (Everything except the final signature) -->
+                <div class="w-full flex flex-col items-start text-left space-y-6">
+                    <!-- 1. The Image container (with decorative border), left aligned -->
+                    <div class="w-full flex justify-start">
+                        <div class="relative w-full max-w-sm">
+                            <!-- Border frame -->
+                            <div class="absolute -inset-3 sm:-inset-4 border border-sand-300 rounded transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 pointer-events-none -z-10"></div>
+                            <!-- Image Container -->
+                            <div class="overflow-hidden rounded-sm h-[340px] sm:h-[460px] w-full max-w-sm bg-sand-100 shadow-sm border border-sand-200/50">
+                                <img src="images/армин фото.png" alt="Armine Arustamyan" class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]" onerror="this.onerror=null; this.src='images/армин фото.jpg';">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Right Column (Text): w-full on mobile, 50% on desktop -->
-                <div class="w-full flex-shrink-0 space-y-6">
-                    <span class="text-xs uppercase tracking-[0.3em] text-sand-500 font-semibold block font-serif italic">Meet the Creator</span>
+                    <!-- 2. The small subtitle -->
+                    <span class="text-xs uppercase tracking-[0.3em] text-sand-500 font-semibold block font-serif italic pt-4">Meet the Creator</span>
+                    
+                    <!-- 3. The main heading -->
                     <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-charcoal-900 tracking-tight leading-tight font-light">
                         «Ваше мастерство должно стоить дорого в любой точке мира»
                     </h2>
+                    
+                    <!-- 4. The first paragraph -->
                     <p class="text-charcoal-600 text-sm md:text-base leading-relaxed font-light">
                         Я основала Студию-Академию Anna Arusto Studio (AAS) с одной целью — навсегда избавить талантливых бьюти-мастеров от привязки к одной локации и копеечного заработка. Наша программа построена по строгим международным стандартам VIP-сервиса и пилочных техник, которые пользуются бешеным спросом в премиум-салонах Нью-Йорка, Лондона и Дубая.
                     </p>
+                    
+                    <!-- 5. The second paragraph -->
                     <p class="text-charcoal-600 text-sm md:text-base leading-relaxed font-light">
                         Мы даем вам не просто очередную теорию. Вы получаете готовое бизнес-руководство, признаваемый международный диплом и четкий алгоритм легализации бьюти-деятельности за рубежом.
                     </p>
                 </div>
-            </div>
 
-            <!-- Signature Block: outside the 2-column container, full width -->
-            <div class="pt-6 border-t border-sand-200">
-                <div class="max-w-md">
-                    <span class="font-serif text-xl italic text-sand-600 block">Армине Арустамян</span>
-                    <span class="text-[10px] uppercase tracking-wider text-charcoal-300 font-medium">Основатель AAS, международный бьюти-судья, экс-директор сети премиум-салонов</span>
+                <!-- ELEMENT 2: The Signature Wrapper (At the very bottom) -->
+                <div class="pt-6 border-t border-sand-200 w-full text-left">
+                    <div class="max-w-md">
+                        <span class="font-serif text-xl italic text-sand-600 block">Армине Арустамян</span>
+                        <span class="text-[10px] uppercase tracking-wider text-charcoal-300 font-medium">Основатель AAS, международный бьюти-судья, экс-директор сети премиум-салонов</span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
