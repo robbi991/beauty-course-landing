@@ -186,38 +186,51 @@
             }
             
             #gallery .max-w-7xl {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
                 box-sizing: border-box !important;
             }
+            #gallery .max-w-7xl > div:first-child {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+                box-sizing: border-box !important;
+            }
+            
             #gallery .grid {
                 display: flex !important;
                 visibility: visible !important;
                 flex-direction: row !important;
                 overflow-x: auto !important;
                 scroll-snap-type: x mandatory !important;
+                scroll-padding: 20px !important; /* Дает правильный зазор при фиксации по центру */
                 -webkit-overflow-scrolling: touch !important;
-                gap: 24px !important;
-                padding-bottom: 16px !important;
+                width: 100% !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                width: 100% !important;
+                /* Делаем внутренние отступы контейнера, чтобы первый и последний слайд имели воздух по бокам */
+                padding-left: 20px !important; 
+                padding-right: 20px !important;
+                padding-bottom: 16px !important;
                 box-sizing: border-box !important;
+                
+                /* 2. Fixed Expanded Inter-card Gap */
+                gap: 20px !important;
             }
+
+            /* 3. Image Slider Dimensions & CENTERING snap alignment */
             #gallery .grid > div {
-                flex: 0 0 78vw !important;
-                width: 78vw !important;
+                flex: 0 0 80vw !important;
+                width: 80vw !important;
                 flex-shrink: 0 !important;
                 height: auto !important;
                 aspect-ratio: 1 / 1 !important;
-                scroll-snap-align: start !important;
+                scroll-snap-align: center !important; /* ЖЕСТКО СТАВИМ ПО ЦЕНТРУ */
                 box-sizing: border-box !important;
                 border-radius: 8px !important;
                 overflow: hidden !important;
                 visibility: visible !important;
             }
+
             #gallery .grid > div img {
                 border-radius: 8px !important;
                 width: 100% !important;
