@@ -512,11 +512,15 @@
         <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-12">
             <!-- Two-column container for Image (Left) and Text (Right) on Desktop -->
             <div class="founder-main-grid flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-12">
-                <!-- Left Column (Image): w-full on mobile, 45% on desktop -->
-                <div class="w-full flex-shrink-0 relative flex justify-center">
-                    <div class="absolute -inset-3 sm:-inset-4 border border-sand-300 rounded transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 pointer-events-none -z-10 max-w-sm w-full mx-auto lg:mx-0"></div>
-                    <div class="overflow-hidden rounded-sm h-[340px] sm:h-[460px] w-full max-w-sm bg-sand-100 relative shadow-sm border border-sand-200/50">
-                        <img src="images/армин фото.png" alt="Armine Arustamyan" class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]" onerror="this.onerror=null; this.src='images/армин фото.jpg';">
+                <!-- Left Column (Image): w-full on mobile, 45% on desktop, aligned left -->
+                <div class="w-full flex-shrink-0 flex justify-start">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Border frame -->
+                        <div class="absolute -inset-3 sm:-inset-4 border border-sand-300 rounded transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 pointer-events-none -z-10"></div>
+                        <!-- Image Container -->
+                        <div class="overflow-hidden rounded-sm h-[340px] sm:h-[460px] w-full bg-sand-100 shadow-sm border border-sand-200/50">
+                            <img src="images/армин фото.png" alt="Armine Arustamyan" class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]" onerror="this.onerror=null; this.src='images/армин фото.jpg';">
+                        </div>
                     </div>
                 </div>
 
