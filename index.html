@@ -114,9 +114,9 @@
                 z-index: 0 !important;
             }
             #about #heroImage {
-                opacity: 0.15 !important;
+                opacity: 0.42 !important;
                 object-fit: cover !important;
-                object-position: center !important;
+                object-position: center right !important;
                 mask-image: none !important;
                 -webkit-mask-image: none !important;
             }
@@ -124,7 +124,7 @@
                 content: '';
                 position: absolute;
                 inset: 0;
-                background: rgba(250, 246, 239, 0.85); /* Sand color overlay mask */
+                background: rgba(250, 246, 239, 0.72); /* Translucent sand color overlay mask */
                 z-index: 1;
             }
             #about .z-10.relative {
@@ -205,16 +205,16 @@
                 -webkit-overflow-scrolling: touch !important;
                 gap: 16px !important;
                 padding-bottom: 16px !important;
-                margin-left: -20px !important;
-                margin-right: -20px !important;
-                padding-left: 20px !important;
-                padding-right: 20px !important;
-                width: calc(100% + 40px) !important;
+                padding-left: 9% !important;
+                padding-right: 9% !important;
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
                 box-sizing: border-box !important;
             }
             #tariffs .grid > div {
                 flex: 0 0 82% !important;
-                scroll-snap-align: start !important;
+                scroll-snap-align: center !important;
                 padding: 20px !important;
                 box-sizing: border-box !important;
                 margin-top: 12px !important;
@@ -255,6 +255,21 @@
                 gap: 24px !important;
             }
             #founder .lg:col-span-5 {
+                margin-bottom: 12px !important;
+            }
+
+            /* Module Accordion Fire Text Sentence Case Override */
+            #program p.text-sand-600 {
+                text-transform: none !important;
+                font-size: 14px !important;
+                line-height: 1.45 !important;
+                letter-spacing: normal !important;
+            }
+
+            /* Form Header Typography Scaling */
+            #register h2 {
+                font-size: 21px !important;
+                line-height: 1.3 !important;
                 margin-bottom: 12px !important;
             }
         }
