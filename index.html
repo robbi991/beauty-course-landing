@@ -41,19 +41,7 @@
                 }
             }
         }
-        // Center the active tariff card (Gold Pack) on mobile load
-        const tariffsGrid = document.querySelector('#tariffs .grid');
-        if (tariffsGrid && window.innerWidth < 768) {
-            // Gold Pack is the second card (index 1)
-            const activeCard = tariffsGrid.children[1];
-            if (activeCard) {
-                // Scroll container to center the active card
-                setTimeout(() => {
-                    const scrollLeft = activeCard.offsetLeft - (tariffsGrid.clientWidth - activeCard.clientWidth) / 2;
-                    tariffsGrid.scrollLeft = scrollLeft;
-                }, 100);
-            }
-        }
+
     </script>
     <style>
         .accordion-content {
@@ -92,8 +80,8 @@
         @media (max-width: 767px) {
             /* 1. Side Paddings & Containers */
             .max-w-7xl, .max-w-xl, .max-w-4xl, .max-w-3xl, .max-w-6xl {
-                padding-left: 20px !important;
-                padding-right: 20px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
                 box-sizing: border-box !important;
             }
             
@@ -178,11 +166,11 @@
                 -webkit-overflow-scrolling: touch !important;
                 gap: 16px !important;
                 padding-bottom: 16px !important;
-                margin-left: -20px !important;
-                margin-right: -20px !important;
-                padding-left: 20px !important;
-                padding-right: 20px !important;
-                width: calc(100% + 40px) !important;
+                margin-left: -16px !important;
+                margin-right: -16px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                width: calc(100% + 32px) !important;
                 box-sizing: border-box !important;
             }
             #geography .grid::-webkit-scrollbar,
@@ -205,11 +193,11 @@
                 -webkit-overflow-scrolling: touch !important;
                 gap: 12px !important;
                 padding-bottom: 16px !important;
-                margin-left: -20px !important;
-                margin-right: -20px !important;
-                padding-left: 20px !important;
-                padding-right: 20px !important;
-                width: calc(100% + 40px) !important;
+                margin-left: -16px !important;
+                margin-right: -16px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                width: calc(100% + 32px) !important;
                 box-sizing: border-box !important;
             }
             #gallery .grid > div {
@@ -225,21 +213,21 @@
                 overflow-x: auto !important;
                 scroll-snap-type: x mandatory !important;
                 -webkit-overflow-scrolling: touch !important;
-                gap: 16px !important;
-                padding-bottom: 16px !important;
-                padding-left: 6vw !important;
-                padding-right: 6vw !important;
+                gap: 2vw !important;
+                padding-bottom: 24px !important;
+                padding-left: 7vw !important;
+                padding-right: 7vw !important;
                 width: 100% !important;
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 box-sizing: border-box !important;
             }
             #tariffs .grid > div {
-                width: 88vw !important;
-                max-width: 340px !important;
+                width: 80vw !important;
+                max-width: 320px !important;
                 flex: 0 0 auto !important;
                 scroll-snap-align: center !important;
-                padding: 20px !important;
+                padding: 24px 20px !important;
                 box-sizing: border-box !important;
                 margin-top: 12px !important;
             }
@@ -676,6 +664,13 @@
                     <a href="#register" class="w-full border border-charcoal-900 hover:bg-charcoal-900 hover:text-white text-charcoal-900 text-[10px] uppercase tracking-widest font-semibold py-3.5 text-center transition-all duration-300 mt-8 block rounded-sm">Подать заявку на разбор</a>
                 </div>
             </div>
+            
+            <!-- Visual Carousel Pagination -->
+            <div id="tariffs-pagination" class="flex md:hidden justify-center items-center space-x-2.5 mt-6">
+                <button class="w-2 h-2 rounded-full bg-charcoal-900 transition-all duration-300" aria-label="Слайд 1"></button>
+                <button class="w-2 h-2 rounded-full bg-sand-300/70 transition-all duration-300" aria-label="Слайд 2"></button>
+                <button class="w-2 h-2 rounded-full bg-sand-300/70 transition-all duration-300" aria-label="Слайд 3"></button>
+            </div>
         </div>
     </section>
 
@@ -892,17 +887,66 @@
             selectOptions.classList.remove('open');
             selectArrow.classList.remove('rotate-180');
         });
-        // Center the active tariff card (Gold Pack) on mobile load
+        // Tariffs carousel mobile layout logic
         const tariffsGrid = document.querySelector('#tariffs .grid');
-        if (tariffsGrid && window.innerWidth < 768) {
-            // Gold Pack is the second card (index 1)
-            const activeCard = tariffsGrid.children[1];
-            if (activeCard) {
-                // Scroll container to center the active card
-                setTimeout(() => {
-                    const scrollLeft = activeCard.offsetLeft - (tariffsGrid.clientWidth - activeCard.clientWidth) / 2;
-                    tariffsGrid.scrollLeft = scrollLeft;
-                }, 100);
+        const dots = document.querySelectorAll('#tariffs-pagination button');
+        
+        if (tariffsGrid && dots.length > 0) {
+            const updateActiveDot = () => {
+                const scrollLeft = tariffsGrid.scrollLeft;
+                const containerWidth = tariffsGrid.clientWidth;
+                const containerCenter = scrollLeft + containerWidth / 2;
+                
+                let activeIndex = 0;
+                let minDiff = Infinity;
+                
+                Array.from(tariffsGrid.children).forEach((card, idx) => {
+                    const cardLeft = card.getBoundingClientRect().left - tariffsGrid.getBoundingClientRect().left + tariffsGrid.scrollLeft;
+                    const cardCenter = cardLeft + card.clientWidth / 2;
+                    const diff = Math.abs(containerCenter - cardCenter);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        activeIndex = idx;
+                    }
+                });
+                
+                dots.forEach((dot, idx) => {
+                    if (idx === activeIndex) {
+                        dot.className = 'w-2 h-2 rounded-full bg-charcoal-900 transition-all duration-300';
+                    } else {
+                        dot.className = 'w-2 h-2 rounded-full bg-sand-300/70 transition-all duration-300';
+                    }
+                });
+            };
+            
+            tariffsGrid.addEventListener('scroll', updateActiveDot);
+            
+            // Handle click on dot to scroll to card
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    const card = tariffsGrid.children[idx];
+                    if (card) {
+                        const cardLeft = card.getBoundingClientRect().left - tariffsGrid.getBoundingClientRect().left + tariffsGrid.scrollLeft;
+                        const scrollTarget = cardLeft - (tariffsGrid.clientWidth - card.clientWidth) / 2;
+                        tariffsGrid.scrollTo({
+                            left: scrollTarget,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Center the active tariff card (Gold Pack, index 1) on mobile load
+            if (window.innerWidth < 768) {
+                const activeCard = tariffsGrid.children[1];
+                if (activeCard) {
+                    setTimeout(() => {
+                        const cardLeft = activeCard.getBoundingClientRect().left - tariffsGrid.getBoundingClientRect().left + tariffsGrid.scrollLeft;
+                        const scrollLeft = cardLeft - (tariffsGrid.clientWidth - activeCard.clientWidth) / 2;
+                        tariffsGrid.scrollLeft = scrollLeft;
+                        updateActiveDot();
+                    }, 100);
+                }
             }
         }
     </script>
