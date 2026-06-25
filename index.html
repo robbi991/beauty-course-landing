@@ -385,41 +385,6 @@
                 margin-bottom: 12px !important;
             }
         }
-
-        /* Founder Layout overrides */
-        .founder-grid {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 32px !important;
-            width: 100% !important;
-        }
-        .founder-img-col {
-            width: 100% !important;
-            display: flex !important;
-            justify-content: flex-start !important;
-        }
-        .founder-text-col {
-            width: 100% !important;
-        }
-
-        @media (min-width: 768px) {
-            .founder-grid {
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: flex-start !important;
-                gap: 0 !important;
-            }
-            .founder-img-col {
-                width: 45% !important;
-                flex: 0 0 45% !important;
-            }
-            .founder-text-col {
-                width: 50% !important;
-                flex: 0 0 50% !important;
-                padding-left: 40px !important;
-            }
-        }
     </style>
 </head>
 <body class="bg-sand-50 text-charcoal-900 font-sans antialiased overflow-x-hidden selection:bg-sand-300 selection:text-charcoal-900">
@@ -526,10 +491,10 @@
     <!-- FOUNDER SECTION -->
     <section id="founder" class="py-12 sm:py-20 lg:py-28 bg-white border-b border-sand-200 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-12">
-            <!-- Grid container: 2-column on desktop, stacked on mobile -->
-            <div class="founder-grid">
-                <!-- Left Column (Image) -->
-                <div class="founder-img-col">
+            <!-- Grid container: 2-column on desktop (768px and up), stacked on mobile -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <!-- Left Column (Image): w-full on mobile, left-aligned -->
+                <div class="w-full flex justify-start">
                     <div class="relative w-full max-w-sm">
                         <!-- Border frame -->
                         <div class="absolute -inset-3 sm:-inset-4 border border-sand-300 rounded transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 pointer-events-none -z-10"></div>
@@ -541,7 +506,7 @@
                 </div>
 
                 <!-- Right Column (Text Content) -->
-                <div class="founder-text-col space-y-6">
+                <div class="w-full space-y-6 text-left">
                     <span class="text-xs uppercase tracking-[0.3em] text-sand-500 font-semibold block font-serif italic">Meet the Creator</span>
                     <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-charcoal-900 tracking-tight leading-tight font-light">
                         «Ваше мастерство должно стоить дорого в любой точке мира»
