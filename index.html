@@ -385,6 +385,25 @@
                 margin-bottom: 12px !important;
             }
         }
+
+        @media (min-width: 768px) {
+            .founder-main-grid {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: flex-start !important;
+                width: 100% !important;
+            }
+            .founder-main-grid > :nth-child(1) { /* The Image Container */
+                width: 45% !important;
+                flex: 0 0 45% !important;
+            }
+            .founder-main-grid > :nth-child(2) { /* The Text Container */
+                width: 50% !important;
+                flex: 0 0 50% !important;
+                padding-left: 40px !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-sand-50 text-charcoal-900 font-sans antialiased overflow-x-hidden selection:bg-sand-300 selection:text-charcoal-900">
@@ -492,9 +511,9 @@
     <section id="founder" class="py-12 sm:py-20 lg:py-28 bg-white border-b border-sand-200 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-12">
             <!-- Two-column container for Image (Left) and Text (Right) on Desktop -->
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12">
+            <div class="founder-main-grid flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-12">
                 <!-- Left Column (Image): w-full on mobile, 45% on desktop -->
-                <div class="w-full md:w-[45%] flex-shrink-0 relative flex justify-center">
+                <div class="w-full flex-shrink-0 relative flex justify-center">
                     <div class="absolute -inset-3 sm:-inset-4 border border-sand-300 rounded transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 pointer-events-none -z-10 max-w-sm w-full mx-auto lg:mx-0"></div>
                     <div class="overflow-hidden rounded-sm h-[340px] sm:h-[460px] w-full max-w-sm bg-sand-100 relative shadow-sm border border-sand-200/50">
                         <img src="images/армин фото.png" alt="Armine Arustamyan" class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]" onerror="this.onerror=null; this.src='images/армин фото.jpg';">
@@ -502,7 +521,7 @@
                 </div>
 
                 <!-- Right Column (Text): w-full on mobile, 50% on desktop -->
-                <div class="w-full md:w-[50%] flex-shrink-0 space-y-6">
+                <div class="w-full flex-shrink-0 space-y-6">
                     <span class="text-xs uppercase tracking-[0.3em] text-sand-500 font-semibold block font-serif italic">Meet the Creator</span>
                     <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-charcoal-900 tracking-tight leading-tight font-light">
                         «Ваше мастерство должно стоить дорого в любой точке мира»
